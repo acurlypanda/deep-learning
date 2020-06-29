@@ -82,6 +82,8 @@ class AlexNet(nn.Module):
     def forward(self, x):
         x = self.features(x)
         x = x.view(x.size(0), 256*6*6)
+        #x.size(0)指batchsize的值。x = x.view(x.size(0), -1)简化x = x.view(batchsize, -1)。
+#view()函数的功能根reshape类似，用来转换size大小。x = x.view(batchsize, -1)中batchsize指转换后有几行，而-1指在不告诉函数有多少列的情况下，根据原tensor数据和batchsize自动分配列数。
         x = x.self.classifier(x)
         return x
     
