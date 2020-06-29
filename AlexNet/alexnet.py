@@ -40,6 +40,7 @@ class AlexNet(nn.Module):
         self.features = nn.Sequential(
             #the first layer net
             #3 inputs channel, 96 output channel, filter kernel size is 11*11, stride is 4, padding is 0
+            #参数计算https://blog.csdn.net/qq_30129009/article/details/98772599
             nn.Conv2d(3, 96, kernel_size=11, stride=4, padding=0),
             nn.Relu(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
@@ -69,12 +70,12 @@ class AlexNet(nn.Module):
             nn.Linear(6*6*256, 4096),
             nn.Relu(inplace=True),
 
-            #the seventh
+            #the seventh。全连接层
             nn.Linear(4096, 4096),
             nn.Relu(inplace=True),
             nn.Dropout(),
 
-            #the eigth
+            #the eigth第7层4096个数据与1000个神经元进行全连接，输出一个1000个元素的向量
             nn.Linear(4096, num_classes),
         )
 
