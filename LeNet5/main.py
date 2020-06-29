@@ -1,4 +1,5 @@
 #-*-coding:utf-8-*-
+#每层参数计算https://blog.csdn.net/qq_42570457/article/details/81460807
 import torch
 import torch.nn as nn
 import torchvision
@@ -36,6 +37,7 @@ class LetNet5(nn.Module):
  
         self.c1 = nn.Sequential(
             nn.Conv2d(1, 6, kernel_size=5, stride=1, padding=2),
+#class torch.nn.Conv2d(in_channels输出图片的通道数, out_channels卷积后的通道数, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
             nn.BatchNorm2d(6),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2)
